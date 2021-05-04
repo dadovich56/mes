@@ -2,11 +2,10 @@ import socket
 import threading
 
 geb = int(input('введите порт: '))
-gegebb = int(input('введите количество людей: '))
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.bind(('127.0.0.1', geb))
-sock.listen(gegebb)
+sock.listen(2)
 
 a = input('введите ваш ник: ')
 a1, a2 = sock.accept()
