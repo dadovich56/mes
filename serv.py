@@ -1,8 +1,11 @@
 import socket
 import threading
 
+dan1 = []
+ip1 = []
 geb = int(input('введите порт: '))
-gegegeb = int(input('введите колияество подключений: '))
+gegegeb = int(input('введите количество подключений: '))
+
 if(gegegeb>5):
 	print('нельзя больше 5 подключений')
 else:
@@ -13,29 +16,42 @@ else:
 	a = input('введите ваш ник: ')
 	print('ожидание подключений...')
 	a1, a2 = sock.accept()
+	dan1.append(a1)
+	ip1.append(a2[0])
 	if(gegegeb>1):
 		a4, a5 = sock.accept()
+		dan1.append(a4)
+		ip1.append(a5[0])
 		if(gegegeb>2):
 			a6, a7 = sock.accept()
+			dan1.append(a6)
+			ip1.append(a7[0])
 			if(gegegeb>3):
 				a8, a9 = sock.accept()
+				dan1.append(a8)
+				ip1.append(a9[0])
 				if(gegegeb>4):
 					a10, a11 = sock.accept()
+					dan1.append(a10)
+					ip1.append(a11[0])
 	
 	def mes():
 		while True:
 			a3 = input('введите ваше сообщение: ')
 			b = '''
 '''+a+': '+a3
-			a1.send(b.encode('utf-8'))
-			if(gegegeb>1):
-				a4.send(b.encode('utf-8'))
-				if(gegegeb>2):
-					a6.send(b.encode('utf-8'))
-					if(gegegeb>3):
-						a8.send(b.encode('utf-8'))
-						if(gegegeb>4):
-							a10.send(b.encode('utf-8'))
+			if(a3=='/showip'):
+				print(ip1)
+			else:
+				a1.send(b.encode('utf-8'))
+				if(gegegeb>1):
+					a4.send(b.encode('utf-8'))
+					if(gegegeb>2):
+						a6.send(b.encode('utf-8'))
+						if(gegegeb>3):
+							a8.send(b.encode('utf-8'))
+							if(gegegeb>4):
+								a10.send(b.encode('utf-8'))
 	
 	def listen():
 		while True:
