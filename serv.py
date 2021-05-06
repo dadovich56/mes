@@ -24,7 +24,7 @@ def listen1(a1, ry, nick1):
 			print('''
 ''' + nick1 + ' отключился')
 			threading.Thread(target=mes_all, args=('''
-''' + nick1 + 'отключился', a1,))
+''' + nick1 + ' отключился', a1,))
 			nicks.remove(nick1)
 			ip1.remove(ry)
 			dan1.remove(a1)
@@ -63,6 +63,12 @@ def mes():
 			dan1[ger].close()
 		elif(a3=='/shownicks'):
 			print(nicks)
+		elif(a3[0:5]=='/send'):
+			hyn1 = int(a3[6:len(a3)])
+			a32 = input('ваше личное сообщение: ')
+			fff = '''
+'''+ '<личное> ' + a + ': ' + a32
+			dan1[hyn1].send(fff.encode('utf-8'))
 		else:
 			for jjej in dan1:
 				jjej.send(b.encode('utf-8'))
