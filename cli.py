@@ -8,6 +8,7 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.connect((geb1, geb2))
 
 a = input('введите ваш ник: ')
+sock.send(a.encode('utf-8'))
 
 def mes():
 	while True:
