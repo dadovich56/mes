@@ -42,6 +42,11 @@ def mes():
 '''+a+': '+a3
 		if(a3=='/showip'):
 			print(ip1)
+		elif(a3[0:4]=='/ban'):
+			ger = int(a3[5:len(a3)]) - 1
+			dan1[ger].send('''
+вы были выгнаны с сервера, нажмите ctrl + c чтобы выйти'''.encode('utf-8'))
+			dan1[ger].close()
 		else:
 			for jjej in dan1:
 				jjej.send(b.encode('utf-8'))

@@ -11,6 +11,8 @@ a = input('введите ваш ник: ')
 
 def mes():
 	while True:
+		if not sock:
+			break
 		a3 = input('введите ваше сообщение: ')
 		b = '''
 '''+a+': '+a3
@@ -19,7 +21,18 @@ def mes():
 def listen():
 	while True:
 		data = sock.recv(2048)
-		print(data.decode('utf-8'))
+		dedeg = '''
+вы были выгнаны с сервера, нажмите ctrl + c чтобы выйти'''
+		if not data:
+			print('''
+''' + 'сервер закрыт, нажмите ctrl + c чтобы выйти')
+			break
+		elif(data.decode('utf-8')==dedeg):
+			print(data.decode('utf-8'))
+			sock.close()
+			break
+		else:
+			print(data.decode('utf-8'))
 
 t1 = threading.Thread(target=mes, args=())
 t2 = threading.Thread(target=listen, args=())
