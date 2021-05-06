@@ -16,18 +16,23 @@ def mes_all(data, a1):
 		if not geg==a1:
 			geg.send(data)
 
-def listen1(a1):
+def listen1(a1, ry):
 	while True:
 		data = a1.recv(2048)
+		if not data:
+			ip1.remove(ry)
+			dan1.remove(a1)
+			break
 		print(data.decode('utf-8'))
-		threading.Thread(target=mes_all, args=(data, a1)).start()
+		mes_all(data, a1)
 
 def acpt():
 	while True:
 		a1, a2 = sock.accept()
 		dan1.append(a1)
 		ip1.append(a2[0])
-		threading.Thread(target=listen1, args=(a1)).start()
+		ry = a2[0]
+		threading.Thread(target=listen1, args=(a1, ry,)).start()
 
 
 def mes():
