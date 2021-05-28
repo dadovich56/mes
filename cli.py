@@ -15,9 +15,13 @@ def mes():
 		if not sock:
 			break
 		a3 = input('введите ваше сообщение: ')
-		b = '''
+		if(a3[0:6]=='/anon '):
+			b22222 = '\n <анонимно>: '+a3[6:len(a)]
+			sock.send(b22222.encode('utf-8'))
+		else:
+			b = '''
 '''+a+': '+a3
-		sock.send(b.encode('utf-8'))
+			sock.send(b.encode('utf-8'))
 
 def listen():
 	while True:
