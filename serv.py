@@ -70,7 +70,7 @@ def mes():
 '''+ '<личное> ' + a + ': ' + a32
 			dan1[hyn1].send(fff.encode('utf-8'))
 		elif(a3[0:6]=='/anon '):
-			b22222 = '\n <анонимно>: '+a3[6:len(a)]
+			b22222 = '\n <анонимно>: '+a3[6:len(a3)]
 			for jjej in dan1:
 				jjej.send(b22222.encode('utf-8'))
 		else:
